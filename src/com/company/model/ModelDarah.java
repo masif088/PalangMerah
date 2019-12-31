@@ -1,43 +1,29 @@
-package com.company.model;
+package com.company.model
 
-public class ModelDarah {
-	protected int jumlah;
-	protected String golongan;
+open class ModelDarah {
+    open var jumlah: Int = 0
+    open var golongan: String
 
-	public ModelDarah(String golongan) {
-		this.jumlah = 0;
-		this.golongan = golongan;
-	}
-	public ModelDarah (){
-	}
+    constructor(golongan: String) {
+        this.jumlah = 0
+        this.golongan = golongan
+    }
 
-	public int getJumlah() {
-		return jumlah;
-	}
+    constructor() {}
 
-	public void setJumlah(int jumlah) {
-		this.jumlah = jumlah;
-	}
+    fun showDarah() {
+        println("Golongan Darah $golongan Jumlah Darah $jumlah")
+    }
 
-	public String getGolongan() {
-		return golongan;
-	}
+    fun addingDarah(pendonor: ModelPendonor) {
+        if (golongan == pendonor.getGolongan()) {
+            jumlah += pendonor.getJumlah()
+        }
+    }
 
-	public void setGolongan(String golongan) {
-		this.golongan = golongan;
-	}
-
-	public void showDarah(){
-		System.out.println("Golongan Darah " + golongan +" Jumlah Darah "+jumlah);
-	}
-	public void addingDarah(ModelPendonor pendonor){
-		if (golongan.equals(pendonor.getGolongan())){
-			jumlah+=pendonor.getJumlah();
-		}
-	}
-	public void removeDarah(ModelPendonor pendonor){
-		if (golongan.equals(pendonor.getGolongan())){
-			jumlah-=pendonor.getJumlah();
-		}
-	}
+    fun removeDarah(pendonor: ModelPendonor) {
+        if (golongan == pendonor.getGolongan()) {
+            jumlah -= pendonor.getJumlah()
+        }
+    }
 }
